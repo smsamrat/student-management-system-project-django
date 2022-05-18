@@ -2,6 +2,7 @@
 from django.shortcuts import redirect, render,HttpResponse
 from app.EmailBackEnd import EmailBackEnd
 from django.contrib.auth import login,logout, authenticate
+from django.contrib import messages
 
 
 def BASE(request):
@@ -25,8 +26,10 @@ def doLogin(request):
             elif user_type == '1':
                 return HttpResponse('Student')
             else:
+                messages.warning(request,'Email and Password Are Invalid !')
                 return redirect('login')
         else:
+            messages.warning(request,'Email and Password Are Invalid !')
             return redirect('login')
 
             
