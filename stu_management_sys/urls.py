@@ -13,6 +13,9 @@ urlpatterns = [
     path('',views.LOGIN, name='login'),
     path('login/',views.doLogin, name='doLogin'),
 
+    #logout
+    path('logout/',views.doLogout, name='doLogout'),
+
     #hod
     path('hod/home',hod_views.HOME, name='hod_home')
 
