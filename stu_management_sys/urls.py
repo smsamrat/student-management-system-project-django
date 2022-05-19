@@ -11,5 +11,9 @@ urlpatterns = [
 
     #login
     path('',views.LOGIN, name='login'),
-    path('login/',views.doLogin, name='doLogin')
+    path('login/',views.doLogin, name='doLogin'),
+
+    #hod
+    path('hod/home',hod_views.HOME, name='hod_home')
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
