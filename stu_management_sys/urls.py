@@ -16,6 +16,10 @@ urlpatterns = [
     #logout
     path('logout/',views.doLogout, name='doLogout'),
 
+    #profile
+    path('profile/',views.PROFILE, name='profile'),
+    path('update-profile/',views.updateProfile, name='update_profile'),
+
     #hod
     path('hod/home',hod_views.HOME, name='hod_home')
 
