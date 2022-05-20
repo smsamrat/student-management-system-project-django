@@ -5,7 +5,19 @@
     <div class="col-sm-12">
        <div class="card">
           <div class="card-body">
-             <form method="post" action="#" enctype="multipart/form-data">
+            <div class="container pt-3">
+                <div class="messages container mt-2">
+                   {% if messages %}
+                      {% for message in messages %}
+                      <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">{{ message }}
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </div>
+                      {% endfor %}
+                   {% endif %}
+                </div>
+             </div>
+             
+             <form method="post" action="{% url 'add_student'%}" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="col-12">
                    <h5 class="form-title"><span>Add Student</span></h5>
@@ -67,7 +79,7 @@
                       <label>Course</label>
                       <select class="form-control" name="course_id" required>
                          <option>Select Gender</option>
-                        {% for c in course%}
+                        {% for c in course %}
                          <option value="{{c.id}}">{{c.name}}</option>
                         {% endfor %}
                       </select>
