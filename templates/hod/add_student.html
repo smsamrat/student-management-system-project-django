@@ -67,19 +67,20 @@
                       <label>Course</label>
                       <select class="form-control" name="course_id" required>
                          <option>Select Gender</option>
-                         <option value="Female">Female</option>
-                         <option value="Male">Male</option>
-                         <option value="Others">Others</option>
+                        {% for c in course%}
+                         <option value="{{c.id}}">{{c.name}}</option>
+                        {% endfor %}
                       </select>
                    </div>
                    <br>
                    <div class="col-sm-11">
                       <label>session year</label>
                       <select class="form-control" name="session_year_id" required>
-                         <option>Select Gender</option>
-                         <option value="Female">Female</option>
-                         <option value="Male">Male</option>
-                         <option value="Others">Others</option>
+                         <option>Select Session</option>
+                         {% for s in session_year %}
+                         <option value="{{s.id}}">{{s.session_start}} To {{s.session_end}}</option>
+                        {% endfor %}
+                         
                       </select>
                    </div>
                    <br>
