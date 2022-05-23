@@ -72,3 +72,7 @@ def viewStudent(request):
         'student':student
     }
     return render(request,'hod/student_view.html',context)
+
+@login_required(login_url='/')
+def editStudent(request):
+    return render(request,'hod/edit_student.html')

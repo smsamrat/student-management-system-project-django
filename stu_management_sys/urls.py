@@ -23,6 +23,7 @@ urlpatterns = [
     #hod
     path('hod/home',hod_views.HOME, name='hod_home'),
     path('add-student',hod_views.addStudent, name='add_student'),
-    path('view-student',hod_views.viewStudent, name='view_student')
+    path('view-student',hod_views.viewStudent, name='view_student'),
+    path('edit-student',hod_views.editStudent, name='edit_student'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
