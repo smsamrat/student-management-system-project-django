@@ -26,7 +26,7 @@ def doLogin(request):
                 return redirect('hod_home')
             elif user_type == '2':
                 return HttpResponse('Stuff')
-            elif user_type == '1':
+            elif user_type == '3':
                 return HttpResponse('Student')
             else:
                 messages.warning(request,'Email and Password Are Invalid !')

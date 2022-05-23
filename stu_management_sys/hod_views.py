@@ -39,7 +39,7 @@ def addStudent(request):
                 username = username,
                 email = email,
                 profile_pic = profile_pic,
-                user_type = 2
+                user_type = 3
             )
             user.set_password(password)
             user.save()
@@ -64,3 +64,11 @@ def addStudent(request):
     }
 
     return render(request,'hod/add_student.html',context)
+
+@login_required(login_url='/')
+def viewStudent(request):
+    student = Student.objects.all().order_by("-id")
+    context ={
+        'student':student
+    }
+    return render(request,'hod/student_view.html',context)
