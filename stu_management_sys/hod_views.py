@@ -74,5 +74,14 @@ def viewStudent(request):
     return render(request,'hod/student_view.html',context)
 
 @login_required(login_url='/')
-def editStudent(request):
-    return render(request,'hod/edit_student.html')
+def editStudent(request, id):
+    student = Student.objects.filter(id = id)
+    course = Course.objects.all()
+    session_year = SessionYear.objects.all()
+    print(student)
+    context ={
+        'student':student,
+        'course':course,
+        'session_year':session_year,
+    }
+    return render(request,'hod/edit_student.html',context)
