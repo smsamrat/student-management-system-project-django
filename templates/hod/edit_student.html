@@ -5,19 +5,7 @@
     <div class="col-sm-12">
        <div class="card">
           <div class="card-body">
-            <div class="container pt-3">
-                <div class="messages container mt-2">
-                   {% if messages %}
-                      {% for message in messages %}
-                      <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">{{ message }}
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      </div>
-                      {% endfor %}
-                   {% endif %}
-                </div>
-             </div>
-             
-             <form method="post" action="{% url 'add_student'%}" enctype="multipart/form-data">
+             <form method="post" action="{% url 'update_student'%}" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="col-12">
                    <h5 class="form-title"><span>Edit Student</span></h5>
@@ -25,7 +13,8 @@
                 <div class="col-sm-11">
                    <div class="form-group">
                       <label>Profile Pic</label>
-                      <input type="file" class="form-control" name="profile_pic" value="{% for s in student%}{{s.admin.profile_pic.url}}{% endfor %}">
+                      <input type="file" class="form-control" name="profile_pic" value="">
+                      <input type="text" class="form-control" name="student_id" value="{% for s in student %}{{s.admin.id}}{% endfor %}">
                    </div>
                 </div>
                 <div class="col-sm-11">
@@ -67,7 +56,7 @@
                    <br>
                    <div class="col-sm-11">
                       <label>Gender</label>
-                      <select class="form-control" name="gender" value="{% for s in student%}{{s.admin.gender}}{% endfor %}">
+                      <select class="form-control" name="gender" value="{% for s in student%}{{s.admin.gender}}{% endfor %}" required>
                          <option>Select Gender</option>
                          <option value="Female">Female</option>
                          <option value="Male">Male</option>
@@ -77,7 +66,7 @@
                    <br>
                    <div class="col-sm-11">
                       <label>Course</label>
-                      <select class="form-control" name="course_id">
+                      <select class="form-control" name="course_id" required>
                          <option>Select Course</option>
                         {% for c in course %}
                          <option value="{{c.id}}">{{c.name}}</option>
@@ -87,7 +76,7 @@
                    <br>
                    <div class="col-sm-11">
                       <label>session year</label>
-                      <select class="form-control" name="session_year_id">
+                      <select class="form-control" name="session_year_id" required>
                          <option>Select Session</option>
                          {% for s in session_year %}
                          <option value="{{s.id}}">{{s.session_start}} To {{s.session_end}}</option>

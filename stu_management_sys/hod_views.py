@@ -85,3 +85,45 @@ def editStudent(request, id):
         'session_year':session_year,
     }
     return render(request,'hod/edit_student.html',context)
+
+def updateStudent(request):
+    if request.method == 'POST':
+        student_id = request.POST.get('student_id')
+        print(student_id)
+        profile_pic = request.FILES.get('profile_pic')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        address = request.POST.get('address')
+        gender = request.POST.get('gender')
+        course_id = request.POST.get('course_id')
+        session_year_id = request.POST.get('session_year_id')
+
+        user = CustomUser.objects.get(id = student_id)
+        user.first_name = first_name
+        user.last_name = last_name
+        user.username = username
+        user.email = email
+
+        if password !=None and password != "":
+            user.set_password(password)
+            
+        if profile_pic !=None and profile_pic != "":
+            user.profile_pic = profile_pic
+        user.save()
+
+        student = Student.objects.get(admin = student_id)
+        student. address = address
+        student. gender = gender
+        course = Course.objects.get(id = course_id)
+        course.course_id = course_id
+        session_year = SessionYear.objects.get(id = session_year_id)
+        session_year.session_year_id = session_year_id
+        student.save()
+        messages.success(request,'Record Are Successfully Updated !')
+        return redirect('view_student')
+
+
+    return render(request,'hod/edit_student.html')
