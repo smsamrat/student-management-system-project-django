@@ -118,9 +118,9 @@ def updateStudent(request):
         student. address = address
         student. gender = gender
         course = Course.objects.get(id = course_id)
-        course.course_id = course_id
+        student.course_id = course
         session_year = SessionYear.objects.get(id = session_year_id)
-        session_year.session_year_id = session_year_id
+        student.session_year_id = session_year
         student.save()
         messages.success(request,'Record Are Successfully Updated !')
         return redirect('view_student')
