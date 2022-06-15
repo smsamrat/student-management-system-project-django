@@ -26,5 +26,6 @@ urlpatterns = [
     path('view-student',hod_views.viewStudent, name='view_student'),
     path('edit-student/<str:id>',hod_views.editStudent, name='edit_student'),
     path('update-student/',hod_views.updateStudent, name='update_student'),
+    path('delete-student/<str:admin>',hod_views.deleteStudent, name='delete_student'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
