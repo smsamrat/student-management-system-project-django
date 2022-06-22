@@ -160,3 +160,17 @@ def editCourse(request,id):
         'course':course,
     }
     return render(request,'hod/edit_course.html',context)
+
+@login_required(login_url='/')
+def updateCourse(request):
+    if request.method == 'POST':
+        course_id = request.POST.get('course_id')
+        name =  request.POST.get('name')
+        print(course_id,name)
+
+        course = Course.objects.get(id=course_id)
+        course.name = name
+        course.save()
+        messages.success(request,'Course Are Successfully Updated ')
+        return redirect('view_course')
+    return render(request,'hod/edit_course.html')

@@ -34,5 +34,6 @@ urlpatterns = [
     path('hod/add-course', hod_views.addCourse, name='add_course'),
     path('hod/view-course', hod_views.viewCourse, name='view_course'),
     path('hod/edit-course/<str:id>', hod_views.editCourse, name='edit_course'),
+    path('hod/update-course', hod_views.updateCourse, name='update_course'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
