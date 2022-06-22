@@ -133,3 +133,8 @@ def deleteStudent(request, admin):
     student.delete()
     messages.success(request,'Record Are Successfully Deleted !')
     return redirect('view_student')
+
+#add course 
+
+def addCourse(request):
+    return render(request,'hod/add_course.html')

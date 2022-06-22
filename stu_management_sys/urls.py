@@ -21,11 +21,16 @@ urlpatterns = [
     path('update-profile/',views.updateProfile, name='update_profile'),
 
     #hod
+    #add student
+
     path('hod/home',hod_views.HOME, name='hod_home'),
     path('add-student',hod_views.addStudent, name='add_student'),
     path('view-student',hod_views.viewStudent, name='view_student'),
     path('edit-student/<str:id>',hod_views.editStudent, name='edit_student'),
     path('update-student/',hod_views.updateStudent, name='update_student'),
     path('delete-student/<str:admin>',hod_views.deleteStudent, name='delete_student'),
+
+    #add course
+    path('hod/add-course', hod_views.addCourse, name='add_course'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
