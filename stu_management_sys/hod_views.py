@@ -144,3 +144,11 @@ def addCourse(request):
         messages.success(request,'Course Are Successfully Created ')
         return redirect('add_course')
     return render(request,'hod/add_course.html')
+
+@login_required(login_url='/')
+def viewCourse(request):
+    course = Course.objects.all()
+    context = {
+        'course':course,
+    }
+    return render(request,'hod/view_course.html',context)

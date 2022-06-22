@@ -32,5 +32,6 @@ urlpatterns = [
 
     #add course
     path('hod/add-course', hod_views.addCourse, name='add_course'),
+    path('hod/view-course', hod_views.viewCourse, name='view_course'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
