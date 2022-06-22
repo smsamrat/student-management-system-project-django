@@ -137,4 +137,10 @@ def deleteStudent(request, admin):
 #add course 
 
 def addCourse(request):
+    if request.method == 'POST':
+        name = request.POST.get('course_name')
+        course = Course(name = name)
+        course.save()
+        messages.success(request,'Course Are Successfully Created ')
+        return redirect('add_course')
     return render(request,'hod/add_course.html')
