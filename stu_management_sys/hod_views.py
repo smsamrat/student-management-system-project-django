@@ -174,3 +174,10 @@ def updateCourse(request):
         messages.success(request,'Course Are Successfully Updated ')
         return redirect('view_course')
     return render(request,'hod/edit_course.html')
+
+@login_required(login_url='/')
+def deleteCourse(request, id):
+    course = Course.objects.get(id = id)
+    course.delete()
+    messages.success(request,'Course Are Successfully Deleted ')
+    return redirect('view_course')
