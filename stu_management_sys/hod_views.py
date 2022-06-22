@@ -152,3 +152,11 @@ def viewCourse(request):
         'course':course,
     }
     return render(request,'hod/view_course.html',context)
+    
+@login_required(login_url='/')
+def editCourse(request,id):
+    course = Course.objects.get(id = id)
+    context = {
+        'course':course,
+    }
+    return render(request,'hod/edit_course.html',context)
