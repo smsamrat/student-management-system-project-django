@@ -181,3 +181,8 @@ def deleteCourse(request, id):
     course.delete()
     messages.success(request,'Course Are Successfully Deleted ')
     return redirect('view_course')
+
+
+@login_required(login_url='/')
+def addSubject(request):
+    return render(request,'hod/add_subject.html')
